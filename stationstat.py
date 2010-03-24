@@ -70,7 +70,6 @@ class Wmata:
 				line = f.readline()
 				line = line.strip()
 				station = line.split('|')
-				# should return as hash instead of an array
 				if line:
 					stations[station[1]] = station[0]
 			
