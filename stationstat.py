@@ -42,7 +42,7 @@ class Wmata:
 
 
 	def stations(self, cache):	
-		stations = []
+		stations = {}
 		if cache == 0:
 			url="http://www.wmata.com/rail/stations.cfm"
 			#s = sys.stdin.read()
@@ -61,7 +61,7 @@ class Wmata:
 					stationid = id[0]
 					stationname = gecici.next
 					station = stationid, stationname
-					stations.append(station)
+					stations[stationname] = stationid
 	
 		else:
 			f = open('.stations', 'r')
@@ -72,7 +72,7 @@ class Wmata:
 				station = line.split('|')
 				# should return as hash instead of an array
 				if line:
-					stations.append(station)
+					stations[station[1]] = station[0]
 			
 			f.close()
 	
@@ -83,4 +83,4 @@ class Wmata:
 w = Wmata()
 #w.stationstat(43)
 stations = w.stations(1)
-print stations
+print stations.keys()
