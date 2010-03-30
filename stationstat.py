@@ -3,6 +3,8 @@ from BeautifulSoup import BeautifulSoup
 import sys
 import re
 import urllib
+import gtk
+import hildon
 
 class Wmata:
 	def __init__(self):
@@ -14,6 +16,7 @@ class Wmata:
 		#s = sys.stdin.read()
 		i=0
 		j=0
+		station = []
 
 		f=urllib.urlopen(url)
 		s=f.read()
@@ -22,7 +25,7 @@ class Wmata:
 
 		p = re.compile('\d+')
 		h = soup.find("h2")
-		print h.contents[0]
+		stationname = h.contents[0]
 
 		for table in soup.findAll("table"):
 			for tr in table.findAll("tr"):	
@@ -37,6 +40,8 @@ class Wmata:
 						# clear the digits from \t and \n
 						minutes = p.findall(minutes[0])
 						minutes = minutes[0]
+					station = [color, car, destination, minutes, stationname]
+#					return station
 					print color + " train with destination to " + destination + " will be here in " + minutes + " minute(s)"
 
 
@@ -79,7 +84,62 @@ class Wmata:
 		return stations
 	
 
-w = Wmata()
-#w.stationstat(43)
-stations = w.stations(1)
-print stations.keys()
+#w = Wmata()
+#queriedStation = w.stationstat(43)
+#stations = w.stations(1)
+
+#print queriedStation
+
+
+
+def app_quit(widget, data=None):
+	    gtk.main_quit()
+
+def on_picker_value_changed(button, user_data=None):
+    stationname = button.get_value()
+    so = Wmata()
+    stationlist = so.stations(1)
+    stationid = stationlist[stationname]
+    so.stationstat(stationid)
+
+def main ():
+    w = Wmata()
+    stations = w.stations(1).keys()
+    
+    program = hildon.Program.get_instance()
+    gtk.set_application_name("wmata station picker")
+
+    window = hildon.StackableWindow()
+    program.add_window(window)
+
+    # Create a picker button
+    picker_button = hildon.PickerButton(gtk.HILDON_SIZE_AUTO,
+		                                            hildon.BUTTON_ARRANGEMENT_VERTICAL)
+
+        # Set a title to the button 
+    picker_button.set_title("Pick a station")
+
+    # Create a touch selector entry
+    selector = hildon.TouchSelectorEntry(text=True)
+       
+    # Populate the selector
+    for station in stations:
+	            selector.append_text(station)
+
+    # Attach the touch selector to the picker button
+    picker_button.set_selector(selector)
+
+    # Attach callback to the "value-changed" signal
+    picker_button.connect("value-changed", on_picker_value_changed)
+
+    # Add button to main window
+    window.add(picker_button)
+
+    window.connect("destroy", app_quit)
+    window.show_all()
+    gtk.main()
+
+if __name__ == "__main__":
+	    main()
+
+#print stations.keys()
