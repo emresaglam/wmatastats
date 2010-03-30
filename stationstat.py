@@ -116,7 +116,7 @@ def main ():
     picker_button = hildon.PickerButton(gtk.HILDON_SIZE_AUTO,
 		                                            hildon.BUTTON_ARRANGEMENT_VERTICAL)
 
-        # Set a title to the button 
+    # Set a title to the button 
     picker_button.set_title("Pick a station")
 
     # Create a touch selector entry

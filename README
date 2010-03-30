@@ -1,2 +1,4 @@
-Application to download Washington DC Metro arrivals from wmata.com.
+Nokia n900 Application to download Washington DC Metro arrivals from wmata.com.
 
+Most of the stuff written here are twisted versions of examples from:
+http://wiki.maemo.org/PyMaemo/UI_tutorial/Data_selection
