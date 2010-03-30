@@ -1,0 +1,5 @@
+* Currently display of the station information is done on the console. It needs to display this information on the GUI
+* Better UI design.
+   * Display lines per their colors, or better with colorful icons. (Blue train with blue icon, etc...)
+   * Get rid of the fullscreen button :) Make it something better.
+
