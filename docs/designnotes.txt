@@ -1,0 +1,11 @@
+in turkish
+Wmata app:
+Amac: wmata metro istasyonlarinin realtime gelis saatlerini bir widget seklinde dizayn etmek
+
+once sayfadan istasyon id ve isimlerini cekip bir sqlite dbde tut
+sonra bir menuyle hangi istasyon icin istedigini sor. Bir kac tane preset istasyon hazirlanabilir.
+Maemo icin html parser var mi arastir. Ayni zamanda conky icin kullandigi  html2txt tarzi birseyle baslanabilir.
+Baz istasyon isimlerini arastir. Mesela location aware yapabilirsin. Triangulation/ gps
+
+Once bir istasyonla baslanabilir.
+
