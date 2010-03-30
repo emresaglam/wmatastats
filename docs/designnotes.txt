@@ -1,4 +1,4 @@
-in turkish
+This document is here for legacy purposes and it's in turkish. My notes when I first designed this app on a boring metro trip :)
 Wmata app:
 Amac: wmata metro istasyonlarinin realtime gelis saatlerini bir widget seklinde dizayn etmek
 
