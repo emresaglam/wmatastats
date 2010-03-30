@@ -105,7 +105,8 @@ def on_picker_value_changed(button, user_data=None):
 def main ():
     w = Wmata()
     stations = w.stations(1).keys()
-    
+    stations.sort()
+
     program = hildon.Program.get_instance()
     gtk.set_application_name("wmata station picker")
 
